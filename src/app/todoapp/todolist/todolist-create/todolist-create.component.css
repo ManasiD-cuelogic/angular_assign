@@ -1,0 +1,41 @@
+input.ng-invalid.ng-touched
+{
+	border-color:red;
+}
+
+.alert {
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+  }
+
+  span{
+	color: #f44336;
+  }
+
+  .form-create-todolist {
+	min-width: 150px;
+	max-width: 500px;
+	width: 100%;
+  }
+
+  .form-create-todolist-full-width {
+	width: 100%;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+	opacity: 0 !important; /*click effect color change*/
+	background-color: #422873 !important;  }
+	
+	.mat-radio-button.mat-accent .mat-radio-inner-circle {
+	background-color: #422873 !important; /*inner circle color change*/  }
+	
+	.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+	border-color: #422873 !important; /*outer ring color change*/  }
+
+	.container{
+		margin-top: 70px;
+	}
+	.btn{
+		margin-left: 10px;
+	}

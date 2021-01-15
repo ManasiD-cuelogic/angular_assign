@@ -1,0 +1,86 @@
+<div class="card h-100">
+    <div class="card-body align-items-center d-flex justify-content-center">
+        <div class="text-center">
+            <div *ngIf='flashMessage'>
+                <div class="alert">
+                    {{ warningMessage }}
+                    <button type="button" class="close" aria-label="Close" (click)="flashMessage=!flashMessage">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div [ngSwitch]="fieldToUpdateInToDoList">
+                <div *ngSwitchCase="'creationDate'">
+                    <label>Creation Date:</label>
+                    <br>
+                    <input type="date" [(ngModel)]="updatedField">
+                    <br>
+                    <p mt-2></p>
+                    <button class='btn btn-outline-success'
+                        (click)="updateFields(updatedField,'creationDate')">Update</button>
+                    <span class="ml-2"></span>
+                    <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Cancel</button>
+                </div>
+                <div *ngSwitchCase="'reminderDate'">
+
+                    <label>Is Reminder: </label>
+                    <input type="radio" [(ngModel)]="updatedFieldForIsReminder" value="yes"
+                        (input)="showReminderDate()">
+                    <label for="yes">yes</label>
+                    <span mr-1></span>
+                    <input type="radio" [(ngModel)]="updatedFieldForIsReminder" value="no" (input)="hideRemiderDate()">
+                    <label for="no">no</label>
+
+                    <div *ngIf='addReminderDateDynamically'>
+                        <label>Reminder Date:</label>
+                        <br>
+                        <input type="date" [(ngModel)]="updatedField">
+                    </div>
+                    <br>
+                    <button class='btn btn-outline-success'
+                        (click)="updateFields(updatedField,'reminderDate',updatedFieldForIsReminder)">Update</button>
+                    <span class="ml-2"></span>
+                    <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Cancel</button>
+                </div>
+                <div *ngSwitchCase="'categorie'">
+                    <label>Categorie</label>
+                    <select name="categorie" [(ngModel)]="updatedField">
+                        <option [ngValue]="'Home'">Home</option>
+                        <option [ngValue]="'Work'">Work</option>
+                    </select>
+                    <br>
+                    <button class='btn btn-outline-success'
+                        (click)="updateFields(updatedField,'categorie')">Update</button>
+                    <span class="ml-2"></span>
+                    <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Cancel</button>
+                </div>
+                <div *ngSwitchCase="'status'">
+                    <label>Status</label>
+                    <select name="status" [(ngModel)]="updatedField">
+                        <option [ngValue]="'pending'">Pending</option>
+                        <option [ngValue]="'done'">Done</option>
+                    </select>
+                    <br>
+                    <button class='btn btn-outline-success'
+                        (click)="updateFields(updatedField,'status')">Update</button>
+                    <span class="ml-2"></span>
+                    <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Cancel</button>
+                </div>
+                <div *ngSwitchCase="'isPublic'">
+                    <label>Is Public: </label>
+                    <input type="radio" [(ngModel)]="updatedField" value="yes">
+                    <label for="yes">yes</label>
+                    <input type="radio" [(ngModel)]="updatedField" value="no">
+                    <label for="no">no</label>
+                    <br>
+                    <button class='btn btn-outline-success'
+                        (click)="updateFields(updatedField,'isPublic')">Update</button>
+                    <span class="ml-2"></span>
+                    <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Cancel</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

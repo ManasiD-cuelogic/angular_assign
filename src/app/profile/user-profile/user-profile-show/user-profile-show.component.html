@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="text-center">
+    <h2 style="color:#424949;">Profile Information</h2>
+    <div class="row justify-content-center">
+      <div class="col col-md-5">
+        <div class='card'>
+          <div class='card-body'>
+            <a>
+              <img class="rounded-circle account-img" width="100" height="100" [src]='profilPic'
+                [routerLink]="['user-profile-update','profilePicUpdate']" title='Click Me to Update!'></a>
+            <br>
+            <br>
+            <label><strong>{{ user.email }}</strong></label>
+            <hr>
+            <label for="FirstName">First Name &nbsp;</label>
+
+            <a [routerLink]="['user-profile-update','fname']">
+              <!--<i  style="cursor: pointer;" class="fa fa-pencil"></i>-->
+              <mat-icon>edit</mat-icon>
+            </a>
+            <br>
+            <label><strong>{{ user.fname }}</strong></label>
+
+            <br>
+            <label for="LastName">Last Name &nbsp; </label>
+            <a [routerLink]="['user-profile-update','lname']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i>-->
+            </a>
+            <br>
+            <label><strong>{{ user.lname }}</strong></label>
+
+
+            <br>
+            <label for="Gender">Gender &nbsp;</label>
+            <a [routerLink]="['user-profile-update','gender']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i> -->
+            </a>
+            <br>
+            <label><strong>{{ user.gender }}</strong></label>
+
+
+            <br>
+            <label for="Address">Address &nbsp; </label>
+            <a [routerLink]="['user-profile-update','address']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i>-->
+            </a>
+            <br>
+            <label><strong>{{ user.address }}</strong></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="text-center">
+        <h2 style="color:#424949;">Create ToDo</h2>
+    </div>
+    <div>
+        <div class="row justify-content-center">
+            <div class="col col-md-5">
+                <div class='card'>
+                    <div class='card-body'>
+                        <div *ngIf='flashMessage'>
+                            <div class="alert">
+                                {{ warningMessage }}
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="flashMessage=!flashMessage">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <form [formGroup]='toDoListForm' (ngSubmit)='createToDOList(toDoListForm)'>
+                            <div class="form-group">
+                                <label><strong>Name:</strong></label>
+                                <input class="form-control" formControlName="name" placeholder="Enter name of list">
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Creation Date:</strong></label>
+                                <br>
+                                <input type="date" formControlName="creationDate" min="today">
+                                <br>
+                            </div>
+                            <div>
+                                <mat-radio-group formControlName="isReminder" aria-label="Select an option">
+                                    <mat-label>is Reminder?</mat-label>
+                                    <mat-radio-button value="yes" (input)="showReminderDate()">yes</mat-radio-button>
+                                    <mat-radio-button value="no" (input)="hideRemiderDate()">no</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <br>
+                            <div *ngIf='addReminderDateDynamically'>
+                                <div class="form-group">
+                                    <label><strong>Reminder Date:</strong></label>
+                                    <br>
+                                    <input type="date" formControlName="reminderDate" min="today">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label><strong>Categorie</strong></label>
+                                <br>
+                                <select class="form-control form-inline" formControlName="categorie">
+                                    <option value="Work">Work</option>
+                                    <option value="Home">Home</option>
+                                </select>
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Status</strong></label>
+                                <br>
+                                <select class="form-control form-inline" formControlName="status">
+                                    <option value="pending">Pending</option>
+                                    <option value="done">Done</option>
+                                </select>
+                                <br>
+                            </div>
+
+                            <div>
+                                <mat-radio-group formControlName="isPublic" aria-label="Select an option">
+                                    <mat-label>is Public?</mat-label>
+                                    <mat-radio-button value="yes">yes</mat-radio-button>
+                                    <mat-radio-button value="no">no</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary" [disabled]='!toDoListForm.valid'>Add
+                                    Task</button>
+                                <button class="btn btn-secondary" (click)='cancleCreation()'>Cancel</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

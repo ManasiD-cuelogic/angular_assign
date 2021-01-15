@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-5">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <div class="text-center">
+            <h2>ToDoList</h2>
+            <hr>
+            <label for="name"><strong>Name </strong></label>
+            <br>
+            <label>{{ todoList.name }}</label>
+            <br>
+
+            <label for="CreationDate"><strong>Creation Date &nbsp; </strong></label>
+            <a [routerLink]="['update-item','creationDate']">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <br>
+            <label>{{ todoList.creationDate }}</label>
+
+            <br>
+            <label for="Reminder"><strong>Reminder Date &nbsp; </strong></label>
+            <a [routerLink]="['update-item','reminderDate']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i>-->
+            </a>
+            <br>
+            <label>{{ todoList.reminderDate }}</label>
+            <br>
+            <label for="Categorie"><strong>Categorie &nbsp; </strong></label>
+            <a [routerLink]="['update-item','categorie']">
+              <!--<i class="fa fa-pencil"></i>-->
+              <mat-icon>edit</mat-icon>
+            </a>
+            <br>
+            <label>{{ todoList.categorie }}</label>
+            <br>
+            <label for="Status"><strong>Status &nbsp; </strong></label>
+            <a [routerLink]="['update-item','status']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i>-->
+            </a>
+            <br>
+            <label>{{ todoList.status }}</label>
+
+            <br>
+            <label for="isPublic"><strong>Public &nbsp; </strong></label>
+            <a [routerLink]="['update-item','isPublic']">
+              <mat-icon>edit</mat-icon>
+              <!--<i class="fa fa-pencil"></i>-->
+            </a>
+            <br>
+            <label>{{ todoList.isPublic }}</label>
+
+            <br>
+            <button class='btn btn-outline-secondary' (click)='cancelUpdate()'>Back</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="float-right">
+        <div class="btn-group">
+            <button class='btn btn-primary pull-right' [routerLink]="['create-todolist']">Create list</button>
+        </div>
+    </div>
+    <div>
+        <div class="text-center">
+            <h1 style="color: #424949;">ToDo List </h1>
+        </div>
+        <div *ngIf='toDoListEmptyFlag;else emptyList'>
+            <br>
+            <div class='card'>
+                <div class='card-body'>
+                    <div>
+                        <input type="text" id="searchTextId" class="form-control" [(ngModel)]="filteredStatus"
+                            placeholder="Type text to search " title="Type in a name">
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            <mat-checkbox (change)="selectAllCheckboxForDeletion($event)"></mat-checkbox>
+                            <button *ngIf="addingMultipleSelectDeleteButton" mat-mini-fab color="warn"
+                                (click)="deleteMultipleToDoList()" [disabled]='disableDeleteButtonFlag'>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </th>
+                        <th (click)="sortTable('name')">Name</th>
+                        <th (click)="sortTable('creationDate')">Creation Date</th>
+                        <th (click)="sortTable('reminderDate')">Reminder Date</th>
+                        <th (click)="sortTable('categorie')">Categorie</th>
+                        <th (click)="sortTable('status')">Status</th>
+                        <th (click)="sortTable('isPublic')">is public</th>
+                        <th>Actions</th>
+                    </tr>
+                    <ng-container *ngIf="( todoList | filter : filteredStatus:
+                   'name': 'creationDate' :'reminderDate': 'categorie':'isPublic' : 'status' ) as result">
+                        <tr *ngFor="let item of result |  sort : sortFieldName">
+                            <ng-container *ngIf="enableDeleteButton()"></ng-container>
+                            <td>
+                                <mat-checkbox (change)="checkbox(item.name,$event)" [checked]='checkboxSelector'>
+                                </mat-checkbox>
+                            </td>
+
+                            <td *ngIf="changeInput;else inputBox">
+                                <input type="text" [value]='item.name'>
+                            </td>
+
+                            <ng-template #inputBox>
+                                <td (click)="changeToInputBox()">{{ item.name}}</td>
+                            </ng-template>
+                            <td>{{ item.creationDate }}</td>
+                            <td>{{ item.reminderDate }}</td>
+                            <td>{{ item.categorie }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.isPublic }}</td>
+                            <td>
+                                <button mat-mini-fab color="primary" [routerLink]="['update-todolist',item.name]">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <span class="ml-2"></span>
+                                <button mat-mini-fab color="warn" [routerLink]="['delete-todolist',item.name]">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="result.length === 0">
+                            <ng-container *ngIf="disableDeleteButton()">
+                            </ng-container>
+                            <td colspan="7">
+                                <div class="text-center" style="color: red;">
+                                    No Result Found
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </table>
+            </div>
+        </div>
+        <ng-template #emptyList>
+            <div id='noRecordFound'>
+                <h1>ToDo List is empty. Click create to create a new one.</h1>
+            </div>
+        </ng-template>
+    </div>
+</div>
