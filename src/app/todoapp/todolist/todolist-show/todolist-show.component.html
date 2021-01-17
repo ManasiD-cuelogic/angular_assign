@@ -1,7 +1,7 @@
 <div class="container">
     <div class="float-right">
         <div class="btn-group">
-            <button class='btn btn-primary pull-right' [routerLink]="['create-todolist']">Create list</button>
+            <button class='btn btn-primary pull-right' [routerLink]="['create-todolist']">Create ToDo</button>
         </div>
     </div>
     <div>
@@ -21,6 +21,7 @@
                     <tr>
                         <th>
                             <mat-checkbox (change)="selectAllCheckboxForDeletion($event)"></mat-checkbox>
+                            <span class="mr-3"></span>
                             <button *ngIf="addingMultipleSelectDeleteButton" mat-mini-fab color="warn"
                                 (click)="deleteMultipleToDoList()" [disabled]='disableDeleteButtonFlag'>
                                 <mat-icon>delete</mat-icon>
@@ -29,9 +30,9 @@
                         <th (click)="sortTable('name')">Name</th>
                         <th (click)="sortTable('creationDate')">Creation Date</th>
                         <th (click)="sortTable('reminderDate')">Reminder Date</th>
-                        <th (click)="sortTable('categorie')">Categorie</th>
+                        <th (click)="sortTable('categorie')">Category</th>
                         <th (click)="sortTable('status')">Status</th>
-                        <th (click)="sortTable('isPublic')">is public</th>
+                        <th (click)="sortTable('isPublic')">Is public</th>
                         <th>Actions</th>
                     </tr>
                     <ng-container *ngIf="( todoList | filter : filteredStatus:
@@ -60,9 +61,9 @@
                                     <mat-icon>edit</mat-icon>
                                 </button>
                                 <span class="ml-2"></span>
-                                <button mat-mini-fab color="warn" [routerLink]="['delete-todolist',item.name]">
+                                <!--<button mat-mini-fab color="warn" [routerLink]="['delete-todolist',item.name]">
                                     <mat-icon>delete</mat-icon>
-                                </button>
+                                </button>-->
                             </td>
                         </tr>
                         <tr *ngIf="result.length === 0">

@@ -28,8 +28,9 @@ export class TodolistCreateComponent implements OnInit {
     });
   }
 
+  today = new Date().toISOString().split('T')[0];
+  
   ngOnInit(): void {
-
   }
   createToDOList(toDoListForm) {
     // stop here if form is invalid

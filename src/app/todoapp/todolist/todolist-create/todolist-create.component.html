@@ -20,7 +20,6 @@
                             <div class="form-group">
                                 <label><strong>Name:</strong></label>
                                 <input class="form-control" formControlName="name" placeholder="Enter name of list">
-                                <br>
                             </div>
                             <div class="form-group">
                                 <label><strong>Creation Date:</strong></label>
@@ -30,9 +29,11 @@
                             </div>
                             <div>
                                 <mat-radio-group formControlName="isReminder" aria-label="Select an option">
-                                    <mat-label>is Reminder?</mat-label>
-                                    <mat-radio-button value="yes" (input)="showReminderDate()">yes</mat-radio-button>
-                                    <mat-radio-button value="no" (input)="hideRemiderDate()">no</mat-radio-button>
+                                    <mat-label><strong>Is Reminder?</strong></mat-label>
+                                    <span class="mr-2"></span>
+                                    <mat-radio-button value="yes" (input)="showReminderDate()">Yes</mat-radio-button>
+                                    <span class="mr-3"></span>
+                                    <mat-radio-button value="no" (input)="hideRemiderDate()">No</mat-radio-button>
                                 </mat-radio-group>
                             </div>
                             <br>
@@ -43,7 +44,6 @@
                                     <input type="date" formControlName="reminderDate" min="today">
                                 </div>
                             </div>
-                            <br>
                             <div class="form-group">
                                 <label><strong>Categorie</strong></label>
                                 <br>
@@ -51,7 +51,6 @@
                                     <option value="Work">Work</option>
                                     <option value="Home">Home</option>
                                 </select>
-                                <br>
                             </div>
                             <div class="form-group">
                                 <label><strong>Status</strong></label>
@@ -60,14 +59,15 @@
                                     <option value="pending">Pending</option>
                                     <option value="done">Done</option>
                                 </select>
-                                <br>
                             </div>
 
                             <div>
                                 <mat-radio-group formControlName="isPublic" aria-label="Select an option">
-                                    <mat-label>is Public?</mat-label>
-                                    <mat-radio-button value="yes">yes</mat-radio-button>
-                                    <mat-radio-button value="no">no</mat-radio-button>
+                                    <mat-label><strong> Is Public?</strong></mat-label>
+                                    <span class="mr-2"></span>
+                                    <mat-radio-button value="yes">Yes</mat-radio-button>
+                                    <span class="mr-3"></span>
+                                    <mat-radio-button value="no">No</mat-radio-button>
                                 </mat-radio-group>
                             </div>
                             <hr>

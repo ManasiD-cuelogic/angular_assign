@@ -83,7 +83,7 @@ export class TodolistShowComponent implements OnInit {
 
   deleteMultipleToDoList(){
     if(this.listTobeDeletedArray.length == 0){
-      alert("In case you want to delete anything please select any list.")
+      alert("Please select a task to delete")
     }else{
       const deleteConfirmation:boolean = confirm("Do you really want to delete multiple lists?")
       if(deleteConfirmation == true){

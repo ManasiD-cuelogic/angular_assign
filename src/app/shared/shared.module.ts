@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from "../app-routing.module";
 import { AccessDeniedComponent } from "./access-denied/access-denied.component";
 import { FilterPipe } from "./custom-pipes/filter.pipe";
@@ -42,6 +43,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
         MatDatepickerModule,
         MatRadioModule,
         MatDialogModule,
+        MatNativeDateModule,
         AppRoutingModule
     ],
     exports: [
@@ -61,6 +63,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
         MatDatepickerModule,
         MatRadioModule,
         MatDialogModule,
+        MatNativeDateModule,
         FilterPipe,
         SortPipe,
         AppRoutingModule
