@@ -11,7 +11,6 @@ import { UserService } from 'src/app/services/user-service.service';
 export class TodolistCreateComponent implements OnInit {
   toDoListForm: FormGroup;
   addReminderDateDynamically: boolean;
-  minDate: Date;
   warningMessage: string;
   flashMessage: boolean = false;
   constructor(private frmbuilder: FormBuilder,
@@ -26,15 +25,14 @@ export class TodolistCreateComponent implements OnInit {
       isPublic: ['', Validators.required],
       reminderDate: ['']
     });
-
-    const today = new Date();
-    this.minDate = new Date(today);
-
   }
 
-  
+  minDate: Date;
 
   ngOnInit(): void {
+    const today = new Date().toISOString().split('T')[0];
+    console.log(today);
+    this.minDate = new Date(today);
   }
   createToDOList(toDoListForm) {
     // stop here if form is invalid
@@ -43,8 +41,8 @@ export class TodolistCreateComponent implements OnInit {
     }
 
     const name = toDoListForm.get('name').value;
-    const creationDate = toDoListForm.get('creationDate').value;
-    const isReminder = toDoListForm.get('isReminder').value;
+    const creationDate = toDoListForm.get('creationDate').value.toISOString().split('T')[0];
+    const isReminder = toDoListForm.get('isReminder').value.toISOString().split('T')[0];
     const categorie = toDoListForm.get('categorie').value;
     const status = toDoListForm.get('status').value;
     const isPublic = toDoListForm.get('isPublic').value;
@@ -65,8 +63,13 @@ export class TodolistCreateComponent implements OnInit {
     } else if (this.addReminderDateDynamically == true) {
       reminderDate = toDoListForm.get('reminderDate').value;
     }
+    if(toDoListForm.get('reminderDate')< toDoListForm.get('creationDate')){
+      this.warningMessage = "Reminder date must be gratter than or equal start date";
+      this.flashMessage = true ;
+    }
     this.UserService.createToDoList(name, creationDate, isReminder, categorie, status, isPublic, reminderDate);
   }
+  
 
 
   get f(): any {
