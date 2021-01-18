@@ -39,3 +39,8 @@ input.ng-invalid.ng-touched
 	.btn{
 		margin-left: 10px;
 	}
+
+	.mat-datepicker-content .mat-calendar {
+		width: 250px;
+		height: 300px;
+	}

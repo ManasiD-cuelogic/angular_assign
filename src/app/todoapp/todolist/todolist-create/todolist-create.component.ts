@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user-service.service';
 export class TodolistCreateComponent implements OnInit {
   toDoListForm: FormGroup;
   addReminderDateDynamically: boolean;
-
+  minDate: Date;
   warningMessage: string;
   flashMessage: boolean = false;
   constructor(private frmbuilder: FormBuilder,
@@ -26,10 +26,14 @@ export class TodolistCreateComponent implements OnInit {
       isPublic: ['', Validators.required],
       reminderDate: ['']
     });
+
+    const today = new Date();
+    this.minDate = new Date(today);
+
   }
 
-  today = new Date().toISOString().split('T')[0];
   
+
   ngOnInit(): void {
   }
   createToDOList(toDoListForm) {
