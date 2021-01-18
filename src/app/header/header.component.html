@@ -18,16 +18,18 @@
           <div class="nav navbar-nav ">
             <a class="nav-item nav-link" [routerLink]="['/todolist']" routerLinkActive="active">ToDo List</a>
           </div>
-        <div class=" nav navbar-nav ml-auto navbar-right">
-          <a class="nav-item nav-link" [routerLink]="['/user-profile']" routerLinkActive="active">Profile</a>
-          <a class="nav-item nav-link" [routerLink]="['/logout-user']" routerLinkActive="active">Logout</a>
-        </div>
+          <div class=" nav navbar-nav ml-auto navbar-right">
+            <a class="nav-item nav-link" [routerLink]="['/user-profile']" routerLinkActive="active">Profile</a>
+            <a class="nav-item nav-link" [routerLink]="['/logout-user']" routerLinkActive="active">Logout</a>
+          </div>
         </ng-template>
       </div>
     </div>
   </nav>
 </header>
-<router-outlet></router-outlet>
-<div class="footer bg-dark navbar-dark" >
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer bg-dark navbar-dark">
   <p class="p">All Rights Are Reserved!!</p>
 </div>
