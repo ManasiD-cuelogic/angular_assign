@@ -41,8 +41,8 @@ export class TodolistCreateComponent implements OnInit {
     }
 
     const name = toDoListForm.get('name').value;
-    const creationDate = toDoListForm.get('creationDate').value.toISOString().split('T')[0];
-    const isReminder = toDoListForm.get('isReminder').value.toISOString().split('T')[0];
+    const creationDate = toDoListForm.get('creationDate').value;
+    const isReminder = toDoListForm.get('isReminder').value;
     const categorie = toDoListForm.get('categorie').value;
     const status = toDoListForm.get('status').value;
     const isPublic = toDoListForm.get('isPublic').value;
