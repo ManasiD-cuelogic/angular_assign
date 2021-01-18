@@ -16,6 +16,7 @@ export class UserProfileUpdateComponent implements OnInit {
 
   getFiles(event) {
     this.updatedField = event.target.files;
+    console.log(this.updateFields);
   }
   constructor(private route: Router,
     private activeRoutes: ActivatedRoute,
