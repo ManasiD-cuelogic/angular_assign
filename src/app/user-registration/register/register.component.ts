@@ -62,6 +62,8 @@ export class RegisterComponent implements OnInit {
 
   //getting signupForm(Reactive form control)
   get f(): any {
+    console.log("hii");
+    
     return this.signupForm.controls;
   }
 

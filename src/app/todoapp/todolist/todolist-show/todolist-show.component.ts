@@ -59,7 +59,7 @@ export class TodolistShowComponent implements OnInit {
     }else{
       this.addingMultipleSelectDeleteButton=true;
     }
-    console.log(this.listTobeDeletedArray)
+    //console.log(this.listTobeDeletedArray)
   }
 
 
@@ -72,7 +72,7 @@ export class TodolistShowComponent implements OnInit {
       this.listTobeDeletedArray = [];
       this.checkboxSelector=false;
     }
-    console.log(this.listTobeDeletedArray)
+    //console.log(this.listTobeDeletedArray)
 
     if(this.listTobeDeletedArray.length == 0){
       this.addingMultipleSelectDeleteButton = false;
@@ -90,6 +90,19 @@ export class TodolistShowComponent implements OnInit {
         this.UserService.deleteMultipleTodoListsOnSelection(this.listTobeDeletedArray);
       }
         this._router.navigate(['/todolist'])
+    }
+
+  }
+  markAsDoneToDoList(){
+    if(this.listTobeDeletedArray.length == 0){
+      alert("Please select a task")
+    }
+    else{
+      const markDoneConfirm:boolean = confirm("Do you want to mark as done")
+      if(markDoneConfirm == true){
+        this.UserService.markAsDoneTodo(this.listTobeDeletedArray);
+      }
+      this._router.navigate(['/todolist'])
     }
 
   }
@@ -115,6 +128,14 @@ disableDeleteButton(){
 
 enableDeleteButton(){
   this.disableDeleteButtonFlag=false;
+}
+disableDoneButtonFlag:boolean;
+disableDoneButton(){
+  this.disableDoneButtonFlag = true;
+}
+
+enableDoneButton(){
+  this.disableDoneButtonFlag = false;
 }
 
   ngOnDestroy() {

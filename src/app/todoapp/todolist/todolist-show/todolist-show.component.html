@@ -26,6 +26,11 @@
                                 (click)="deleteMultipleToDoList()" [disabled]='disableDeleteButtonFlag'>
                                 <mat-icon>delete</mat-icon>
                             </button>
+                            <span class="mr-3"></span>
+                            <button *ngIf="addingMultipleSelectDeleteButton" mat-mini-fab color="primary"
+                                (click)="markAsDoneToDoList()" [disabled]='disableDoneButtonFlag'>
+                                Done
+                            </button>
                         </th>
                         <th (click)="sortTable('name')">Name</th>
                         <th (click)="sortTable('creationDate')">Creation Date</th>

@@ -13,10 +13,12 @@ export class UserProfileUpdateComponent implements OnInit {
   fieldToUpdate: string;
   warningMessage: string;
   flashMessage: boolean = false;
+ //imgFilter= /.(gif|jpe|jpeg|JPG|JPEG|PNG|png|webp|bmp)$/i;
 
   getFiles(event) {
     this.updatedField = event.target.files;
     console.log(this.updateFields);
+    
   }
   constructor(private route: Router,
     private activeRoutes: ActivatedRoute,
