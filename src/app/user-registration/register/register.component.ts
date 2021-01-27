@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmPasswordValidator } from 'src/app/form-validator/passwordMatch.validator';
 import { UserService } from 'src/app/services/user-service.service';
@@ -22,15 +22,15 @@ export class RegisterComponent implements OnInit {
     private UserService: UserService,
     private route: Router) {
     this.signupForm = frmbuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      fname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.maxLength(15), Validators.minLength(1)]],
-      lname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.maxLength(15), Validators.minLength(1)]],
+      email:['',[Validators.required,Validators.email]],
+      fname: ['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/),Validators.maxLength(15),Validators.minLength(1)]],
+      lname: ['',[Validators.required,Validators.pattern(/^[a-zA-Z]+$/),Validators.maxLength(15),Validators.minLength(1)]],
       profileImage: ['',[Validators.pattern(/.(gif|jpe|jpeg|JPG|JPEG|PNG|png|webp|bmp)$/i)]],
-      gender: ['', Validators.required],
-      address: ['', [Validators.required, Validators.maxLength(25), Validators.minLength(1)]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,}$/)]],
-      cnfPassword: ['', Validators.required]
-    }, { validator: ConfirmPasswordValidator.MatchPassword });
+      gender: ['',Validators.required],
+      address:['',[Validators.required,Validators.maxLength(25),Validators.minLength(1)]],
+      password: ['',[Validators.required,Validators.pattern(/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/)]],
+      cnfPassword: ['',Validators.required]
+    },{ validator: ConfirmPasswordValidator.MatchPassword });
   }
 
   ngOnInit(): void {
@@ -61,10 +61,10 @@ export class RegisterComponent implements OnInit {
   }
 
   //getting signupForm(Reactive form control)
-  get f(): any {
+  /*get f(): any {
     console.log("hii");
     
     return this.signupForm.controls;
-  }
+  }*/
 
 }

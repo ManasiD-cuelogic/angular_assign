@@ -17,10 +17,10 @@
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>Email</mat-label>
                                 <input matInput formControlName="email" placeholder="Ex. abc@example.com">
-                                <mat-error *ngIf="f.email.errors?.email && !f.email.errors?.required">
+                                <mat-error *ngIf="signupForm.controls['email'].hasError('pattern')&& signupForm.controls['email'].dirty || signupForm.controls['email'].touched && !signupForm.controls['email'].hasError('required')">
                                     <strong> Please enter a valid email address</strong>
                                 </mat-error>
-                                <mat-error *ngIf="f.email.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['email'].hasError('required') ">
                                     <strong> Email is required</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -28,46 +28,56 @@
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>First Name</mat-label>
                                 <input matInput formControlName="fname" placeholder="Enter first name">
-                                <mat-error *ngIf="f.fname.errors?.pattern && !f.fname.errors?.required">
+                                <mat-error *ngIf="signupForm.controls['fname'].hasError('pattern') && !signupForm.controls['fname'].hasError('required')">
                                     <strong> Please enter a valid first name</strong>
                                 </mat-error>
-                                <mat-error *ngIf="f.fname.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['fname'].hasError('required') ">
                                     <strong> First Name is required</strong>
                                 </mat-error>
+                                <div *ngIf="signupForm.controls['fname'].hasError('pattern')  && signupForm.controls['fname'].hasError('required') " class="alert alert-danger">
+                                    Please enter a valid first name!
+                                </div>
                             </mat-form-field>
-
+                            <!--
+                            <div class="from-group form-signup-full-width">
+                                <input matInput formControlName="fname" placeholder="Enter first name">
+                                <div *ngIf = "fname.pattern && fname.required" class="alert alert-danger">
+                                    Please enter a valid first name!
+                                </div>
+                            </div>
+                        -->
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>Last Name</mat-label>
                                 <input matInput formControlName="lname" placeholder="Enter last name">
-                                <mat-error *ngIf="f.lname.errors?.pattern && !f.lname.errors?.required">
+                                <mat-error *ngIf="signupForm.controls['lname'].hasError('pattern')  && !signupForm.controls['lname'].hasError('required') ">
                                     <strong> Please enter a valid last name</strong>
                                 </mat-error>
-                                <mat-error *ngIf="f.lname.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['lname'].hasError('required')">
                                     <strong> Last Name is required</strong>
                                 </mat-error>
                             </mat-form-field>
 
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>Password</mat-label>
-                                <input matInput type='password' formControlName="password">
-                                <mat-error *ngIf="f.password.errors?.pattern && !f.password.errors?.required">
+                                <input matInput type='password' formControlName="password" name="password" autocomplete="on">
+                                <mat-error *ngIf="signupForm.controls['password'].hasError('pattern') && !signupForm.controls['password'].hasError('required')">
                                     *Password should contain at least one uppercase or one lowercase and length should
                                     be of
                                     6 or more characters
                                 </mat-error>
-                                <mat-error *ngIf="f.password.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['password'].hasError('required') ">
                                     <strong> Password is required</strong>
                                 </mat-error>
                             </mat-form-field>
 
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>Confirm Password</mat-label>
-                                <input matInput type='password' formControlName="cnfPassword">
+                                <input matInput type='password' formControlName="cnfPassword" name='password' autocomplete="on">
                                 <mat-error
                                     *ngIf="signupForm.get('cnfPassword').errors && signupForm.get('cnfPassword').errors.ConfirmPassword">
                                     *Password is not matching
                                 </mat-error>
-                                <mat-error *ngIf="f.cnfPassword.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['cnfPassword'].hasError('required') ">
                                     <strong> Confirm password is required</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -78,7 +88,7 @@
                                     <mat-option value="Male">Male</mat-option>
                                     <mat-option value="Female">Female</mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="f.gender.errors?.required ">
+                                <mat-error *ngIf="signupForm.controls['gender'].hasError('required') ">
                                     <strong> Gender is required</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -86,7 +96,10 @@
                             <mat-form-field class=" form-group form-signup-full-width">
                                 <mat-label>Address</mat-label>
                                 <input matInput formControlName="address" placeholder="Enter address">
-                                <mat-error *ngIf="f.address.errors?.required && !f.pristine">
+                                <mat-error *ngIf="signupForm.controls['address'].hasError('required') && !signupForm.controls['address'].pristine">
+                                    Address is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="signupForm.controls['address'].hasError('required') && signupForm.controls['address'].touched">
                                     Address is <strong>required</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -96,7 +109,7 @@
 
                                 <input type="file" formControlName="profileImage" multiple size="50" accept="image/*"
                                     (change)="getFiles($event)">
-                                <mat-error *ngIf="f.profileImage.errors?.pattern">
+                                <mat-error *ngIf="signupForm.controls['profileImage'].hasError('pattern')">
                                     Only images can accepted!
                                 </mat-error>
                             </div>
