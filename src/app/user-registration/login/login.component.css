@@ -1,3 +1,36 @@
 .text-center{
     padding-top: 100px;
 }
+.alert {
+	padding: 20px;
+	background-color: #d6362b;
+	color: white;
+  }
+
+  input.ng-invalid.ng-touched
+{
+	border-color:red;
+}
+
+span{
+	color: #f44336;
+  }
+
+  .form-signin  {
+	min-width: 150px;
+	max-width: 500px;
+	width: 100%;
+  }
+
+  .form-signin-full-width {
+	width: 100%;
+  }
+
+  .centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+  

@@ -51,7 +51,9 @@ export class LoginComponent implements OnInit {
 
 }
   //getting signinForm(Reactive form control)
-  get f(): any {
+ /* get f(): any {
+    console.log("hiiii");
+    
     return this.signinForm.controls;
-}
+}*/
 }

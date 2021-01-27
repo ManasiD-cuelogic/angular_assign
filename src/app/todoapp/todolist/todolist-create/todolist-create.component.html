@@ -22,9 +22,9 @@
                                 <input class="form-control" formControlName="name" placeholder="Enter name of list">
                             </div>
                             <div class="form-group">
-                            <label><strong>Creation Date:</strong></label>
-                            <br>
-                            <!--<mat-form-field class="example-full-width" appearance="fill">-->
+                                <label><strong>Creation Date:</strong></label>
+                                <br>
+                                <!--<mat-form-field class="example-full-width" appearance="fill">-->
 
                                 <input type="date" formControlName="creationDate" [min]="minDate">
                                 <!--<mat-label>Choose a date</mat-label>
@@ -32,7 +32,7 @@
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                                 <br>-->
-                                </div>
+                            </div>
                             <!--</mat-form-field>-->
                             <div>
                                 <mat-radio-group formControlName="isReminder" aria-label="Select an option">
@@ -50,8 +50,9 @@
                                     <label><strong>Reminder Date:</strong></label>
                                     <br>
                                     <input type="date" formControlName="reminderDate">
-                                    <!--<mat-form-field class="example-full-width" appearance="fill">  -->                                 <!--<input type="date" formControlName="reminderDate" min="today">-->
-                                   <!-- <mat-label>Choose a date</mat-label>
+                                    <!--<mat-form-field class="example-full-width" appearance="fill">  -->
+                                    <!--<input type="date" formControlName="reminderDate" min="today">-->
+                                    <!-- <mat-label>Choose a date</mat-label>
                                     <input matInput [min]="minDate" formControlName="reminderDate" [matDatepicker]="picker">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
