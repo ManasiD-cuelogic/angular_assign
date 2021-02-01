@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DatabaseService } from '../services/database.service';
 import { UserService } from '../services/user-service.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   currentLogedInUserFlag:boolean;
 
   constructor(private UserService:UserService,
-    private elementRef:ElementRef) {
+    private elementRef:ElementRef,
+    private databaseService: DatabaseService) {
       this.currentLoggedInUserEmailId=this.UserService.currentLoggedInUser()
     this.currentLogedInUserFlag = this.currentLoggedInUserEmailId ? true:false
-    this.sub =this.UserService.getLoggedInName.subscribe(loggedInFlag => {
+    this.sub =this.databaseService.getLoggedInName.subscribe(loggedInFlag => {
       this.changeLogInStatus(loggedInFlag)
       console.log(loggedInFlag)
     });
