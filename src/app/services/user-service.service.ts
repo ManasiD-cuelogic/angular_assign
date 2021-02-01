@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { stringify } from 'querystring';
 import { ToDoList, User } from '../user.module';
+import { DatabaseService } from './database.service';
 
 
 
@@ -13,9 +13,10 @@ export class UserService {
   data: string | ArrayBuffer;
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+    private databaseService: DatabaseService) { }
 
-  updatingUserInterface(email, fname, lname, gender, address, password, fileObj) {
+  /*updatingUserInterface(email, fname, lname, gender, address, password, fileObj) {
     let user: User;
     user = {
       email: email,
@@ -29,17 +30,17 @@ export class UserService {
     }
 
     return user;
-  }
+  }*/
 
-  savingNewUserInLocalStorage(user, email) {
+ /*savingNewUserInLocalStorage(user, email) {
     //checking if user is already registered then 
     if (localStorage.getItem(email) == null) {
       localStorage.setItem(user.email, JSON.stringify(user));
       this.route.navigate(['/login-user'])
     }
-  }
+  }*/
 
-  registerNewUser<User>(email, fname, lname, gender, address, password, fileObj): boolean {
+  /*registerNewUser<User>(email, fname, lname, gender, address, password, fileObj): boolean {
     let user;
     let fileReader = new FileReader();
     if (fileObj === undefined) {
@@ -63,15 +64,15 @@ export class UserService {
       return false;
     }
 
-  }
+  }*/
 
-  clearUserSession() {
+  /*clearUserSession() {
     sessionStorage.clear();
     this.getLoggedInName.emit(false);
     this.route.navigate(['/login-user'])
-  }
+  }*/
 
-  loginUser(emailId, password): boolean {
+  /*loginUser(emailId, password): boolean {
     if (localStorage.getItem(emailId) !== null) {
       const userStorage = JSON.parse(localStorage.getItem(emailId));
       if (userStorage.password == password) {
@@ -84,7 +85,7 @@ export class UserService {
     } else {
       return true; //user does not exists
     }
-  }
+  }*/
 
   userProfileView(): User {
     //console.log(JSON.parse(localStorage.getItem(sessionStorage.getItem('email'))))

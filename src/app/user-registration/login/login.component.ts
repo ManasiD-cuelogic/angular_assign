@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 import { UserService } from 'src/app/services/user-service.service';
 export class SignUpErrorStateMatcher implements ErrorStateMatcher {
   
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   flashMessage:boolean=false;
   constructor( private frmbuilder: FormBuilder,
     private UserService:UserService,
+    private databaseService: DatabaseService,
     private route:Router) { 
       this.signinForm = frmbuilder.group({
         email:['',[Validators.required,Validators.email]],
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     const emailId = signinForm.get('email').value;
     const password = signinForm.get('password').value;
 
-    const loginCheck:boolean = this.UserService.loginUser(emailId,password);
+    const loginCheck:boolean = this.databaseService.loginUser(emailId,password);
     if(loginCheck == true){
       this.flashMessage=true;
       this.warningMessage="User does not exists";
