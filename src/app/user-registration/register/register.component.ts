@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmPasswordValidator } from 'src/app/form-validator/passwordMatch.validator';
+import { DatabaseService } from 'src/app/services/database.service';
 import { UserService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
   }
   constructor(private frmbuilder: FormBuilder,
     private UserService: UserService,
+    private databaseService: DatabaseService,
     private route: Router) {
     this.signupForm = frmbuilder.group({
       email:['',[Validators.required,Validators.email]],
@@ -51,7 +53,7 @@ export class RegisterComponent implements OnInit {
     const filesObj = this.files;
 
 
-    const userErrorCheck: boolean = this.UserService.registerNewUser(emailId, fname, lname, gender, address, password, filesObj);
+    const userErrorCheck: boolean = this.databaseService.registerNewUser(emailId, fname, lname, gender, address, password, filesObj);
 
     if (userErrorCheck == false) {
       this.flashMsg = true;

@@ -55,7 +55,8 @@
                             </p>
                             <p *ngSwitchCase="'profilePicUpdate'">
                                 <label>Upload profile pic:</label>
-                                <input type="file" multiple size="50" accept="image/*" (change)="getFiles($event)">
+                                <input type="file" multiple size="50" accept="image/*" (change)="getFiles($event)" 
+                                pattern = ".gif|jpe|jpeg|JPG|JPEG|PNG|png|webp|bmp$">
                                 <br>
                                 <button class='btn btn-outline-success'
                                     (click)="updateFields(updatedField,'profilePic')">Update</button>

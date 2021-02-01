@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 import { UserService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -10,10 +11,10 @@ import { UserService } from 'src/app/services/user-service.service';
 export class LogoutComponent implements OnInit {
 
   constructor(private route: Router,
-    private UserService: UserService) { }
+    private databaseService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.UserService.clearUserSession()
+    this.databaseService.clearUserSession()
   }
 
 }
